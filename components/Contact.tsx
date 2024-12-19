@@ -8,7 +8,7 @@ export default function Contact() {
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-8">Get Involved</h2>
           <p className="text-center text-gray-600 mb-8">
-            Have questions or want to join the Student Senate? We'd love to hear from you!
+            Have questions or want to join the Student Senate? We&apos;d love to hear from you!
           </p>
           
           <form className="space-y-6">
