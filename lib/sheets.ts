@@ -1,34 +1,22 @@
+// connect to sheets api and make a function readSheet to get data from sheet given sheetId, and range
 import { google } from "googleapis";
+import { JWT } from "google-auth-library";
 
-const auth = new google.auth.GoogleAuth({
+const sheets = google.sheets("v4");
+
+const auth = new JWT({
   keyFile: "credentials.json",
-  scopes: [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-  ],
+  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
-const sheets = google.sheets({ version: "v4", auth });
 
-export const readSheet = async (spreadsheetId: string, range: string) => {
+async function readSheet(spreadsheetId: string, range: string) {
   const response = await sheets.spreadsheets.values.get({
+    auth,
     spreadsheetId,
     range,
   });
-  return response.data.values;
-};
 
-export const writeSheet = async (
-  spreadsheetId: string,
-  range: string,
-  values: string[]
-) => {
-  const response = await sheets.spreadsheets.values.update({
-    spreadsheetId,
-    range,
-    valueInputOption: "RAW",
-    requestBody: {
-      values: [values],
-    },
-  });
-  return response.data;
-};
+  return response.data.values;
+}
+
+export { readSheet };
