@@ -1,22 +1,25 @@
-// connect to sheets api and make a function readSheet to get data from sheet given sheetId, and range
 import { google } from "googleapis";
-import { JWT } from "google-auth-library";
+import keys from "@/creds.json" assert { type: "json" };
 
-const sheets = google.sheets("v4");
-
-const auth = new JWT({
-  keyFile: "credentials.json",
-  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-});
-
-async function readSheet(spreadsheetId: string, range: string) {
-  const response = await sheets.spreadsheets.values.get({
-    auth,
-    spreadsheetId,
-    range,
+export async function handler() {
+  const auth = await google.auth.getClient({
+    projectId: keys.project_id,
+    credentials: {
+      type: "service_account",
+      private_key: keys.private_key.split(String.raw`\n`).join("\n"),
+      client_email: keys.client_email,
+      client_id: keys.client_id,
+      token_url: keys.token_uri,
+      universe_domain: "googleapis.com",
+    },
+    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 
-  return response.data.values;
-}
+  const sheets = google.sheets({ version: "v4", auth });
 
-export { readSheet };
+  const data = await sheets.spreadsheets.values.get({
+    spreadsheetId: "1bWN4v6DJB0emsQUU5pydxRhIH6ibIERe3ujFBV5luEI",
+    range: "Sheet1!A:D",
+  });
+  return data;
+}

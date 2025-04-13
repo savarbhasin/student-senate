@@ -1,6 +1,6 @@
 import { signIn, auth, signOut } from "@/lib/auth";
 import Sidebar from "./sidebar";
-import { readSheet } from "@/lib/sheets";
+import { handler } from "@/lib/sheets";
 
 export default async function SignIn() {
   const session = await auth();
@@ -77,12 +77,7 @@ export default async function SignIn() {
             <button
               onClick={async () => {
                 "use server";
-                console.log(
-                  await readSheet(
-                    "1bWN4v6DJB0emsQUU5pydxRhIH6ibIERe3ujFBV5luEI",
-                    "Sheet1!A:Z",
-                  ),
-                );
+                console.log(handler());
               }}
               className="p-2 px-4 bg-blue-200 rounded-md"
             >
