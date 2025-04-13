@@ -75,13 +75,13 @@ export default async function SignIn() {
               <span>Add New Record</span>
             </button>
             <button
-              onClick={() => {
+              onClick={async () => {
                 "use server";
                 console.log(
-                  readSheet(
+                  await readSheet(
                     "1bWN4v6DJB0emsQUU5pydxRhIH6ibIERe3ujFBV5luEI",
-                    "Sheet1!A:Z"
-                  )
+                    "Sheet1!A:Z",
+                  ),
                 );
               }}
               className="p-2 px-4 bg-blue-200 rounded-md"
