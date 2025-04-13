@@ -1,8 +1,7 @@
-import React from 'react';
-import Hero from '../components/Hero';
-import Leadership from '../components/Leadership';
-import Initiatives from '../components/Initiatives';
-import Contact from '../components/Contact';
+import Hero from "@/components/Hero";
+import Leadership from "@/components/Leadership";
+import Initiatives from "@/components/Initiatives";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (

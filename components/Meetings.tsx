@@ -1,12 +1,13 @@
-import React from 'react';
-import { Calendar, Clock, MapPin } from 'lucide-react';
+import { Calendar, Clock, MapPin } from "lucide-react";
 
 export default function Meetings() {
   return (
     <section id="meetings" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-12">Senate Meetings</h2>
-        
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Senate Meetings
+        </h2>
+
         <div className="bg-blue-50 rounded-lg p-8 mb-8">
           <h3 className="text-xl font-semibold mb-4">Next Meeting</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -35,7 +36,7 @@ export default function Meetings() {
               <li>Submit agenda items 72 hours before the meeting</li>
             </ul>
           </div>
-          
+
           <div className="mt-6">
             <a
               href="#"

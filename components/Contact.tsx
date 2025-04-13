@@ -1,5 +1,4 @@
-import React from 'react';
-import { Send } from 'lucide-react';
+import { Send } from "lucide-react";
 
 export default function Contact() {
   return (
@@ -8,12 +7,16 @@ export default function Contact() {
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-8">Get Involved</h2>
           <p className="text-center text-gray-600 mb-8">
-            Have questions or want to join the Student Senate? We&apos;d love to hear from you!
+            Have questions or want to join the Student Senate? We&apos;d love to
+            hear from you!
           </p>
-          
+
           <form className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Name
               </label>
               <input
@@ -22,9 +25,12 @@ export default function Contact() {
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
-            
+
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email
               </label>
               <input
@@ -33,9 +39,12 @@ export default function Contact() {
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
-            
+
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Message
               </label>
               <textarea
@@ -44,7 +53,7 @@ export default function Contact() {
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               ></textarea>
             </div>
-            
+
             <div>
               <button
                 type="submit"
