@@ -1,28 +1,12 @@
-import { signIn, auth, signOut } from "@/lib/auth";
-import Sidebar from "./sidebar";
+import Sidebar from "../sidebar";
 
-export default async function SignIn() {
-  const session = await auth();
-
-  if (!session?.user)
-    return (
-      <form
-        action={async () => {
-          "use server";
-          await signIn("google");
-        }}
-      >
-        <button type="submit">Sign in</button>
-      </form>
-    );
+export default function AdminPage() {
   return (
     <div className="pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <Sidebar />
       <div className="flex flex-row items-center justify-between mb-4">
         <div className="flex flex-col gap-1">
-          <h2 className="text-2xl font-semibold">
-            Hi, {session.user.name?.split(" ")[0]} 👋
-          </h2>
+          <h2 className="text-2xl font-semibold">Hi, Sakshat 👋</h2>
           <p className="text-gray-600 font-medium">Good Evening</p>
         </div>
         <div className="flex flex-row space-x-8 items-center">
@@ -50,13 +34,7 @@ export default async function SignIn() {
         <div className="border-2 shadow-xl border-blue-800 p-2 rounded-md">
           <h2 className="font-semibold text-lg">Edit Gallery</h2>
           <div className="flex flex-row items-center space-x-5 mt-2">
-            <button
-              onClick={async () => {
-                "use server";
-                await signOut();
-              }}
-              className="p-2 px-4 bg-blue-200 rounded-md flex flex-row items-center space-x-2"
-            >
+            <button className="p-2 px-4 bg-blue-200 rounded-md flex flex-row items-center space-x-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
