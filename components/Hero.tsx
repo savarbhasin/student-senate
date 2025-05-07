@@ -1,11 +1,15 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
     <div className="relative h-screen">
       <div className="absolute inset-0">
-        <img
+        <Image
           className="w-full h-full object-cover"
-          src="https://apnaaddafest.in/blog/content/images/2024/01/IIITD.jpeg"
+          src={'/IIITD.jpeg'}
           alt="University campus"
+          width={1920}
+          height={1080}
         />
         <div className="absolute inset-0 bg-blue-900/60 mix-blend-multiply" />
       </div>

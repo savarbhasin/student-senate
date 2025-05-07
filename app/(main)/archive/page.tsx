@@ -1,6 +1,5 @@
 import { readSpreadsheet } from "@/lib/sheets";
 import  Archive from "@/components/Archive";
-import { ArchiveType } from "@/components/Archive";
 
 export default async function ArchivePage(){
   const data = await readSpreadsheet(
