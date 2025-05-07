@@ -1,3 +1,4 @@
+import { readSpreadsheet } from "@/lib/sheets";
 import { CheckCircle, Clock } from "lucide-react";
 
 const initiatives = [
@@ -39,7 +40,12 @@ const initiatives = [
   },
 ];
 
-export default function Initiatives() {
+export default async function Initiatives() {
+  const data = await readSpreadsheet(
+    "19UcQg8sKhVhVRsutxGqrPiILdUGDvRjwrvnB7g7TI4s",
+    "Sheet1!A1:C20"
+  );
+  data?.shift();
   return (
     <section id="initiatives" className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,31 +53,29 @@ export default function Initiatives() {
           Current Initiatives
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {initiatives.map((initiative) => (
+          {data?.map((initiative) => (
             <div
-              key={initiative.title}
+              key={initiative[0]}
               className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
             >
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-semibold">{initiative.title}</h3>
-                {initiative.status === "completed" ? (
+                <h3 className="text-xl font-semibold">{initiative[0]}</h3>
+                {initiative[2] === "completed" ? (
                   <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
                 ) : (
                   <Clock className="h-5 w-5 text-yellow-500 flex-shrink-0" />
                 )}
               </div>
-              <p className="text-gray-600">{initiative.description}</p>
+              <p className="text-gray-600">{initiative[1]}</p>
               <div className="mt-4">
                 <span
                   className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                    initiative.status === "completed"
+                    initiative[2] === "completed"
                       ? "bg-green-100 text-green-800"
                       : "bg-yellow-100 text-yellow-800"
                   }`}
                 >
-                  {initiative.status === "completed"
-                    ? "Completed"
-                    : "In Progress"}
+                  {initiative[2] === "completed" ? "Completed" : "In Progress"}
                 </span>
               </div>
             </div>

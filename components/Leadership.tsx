@@ -1,3 +1,4 @@
+import { readSpreadsheet } from "@/lib/sheets";
 import { Mail, Linkedin } from "lucide-react";
 
 const leaders = [
@@ -27,7 +28,12 @@ const leaders = [
   },
 ];
 
-export default function Leadership() {
+export default async function Leadership() {
+  const data = await readSpreadsheet(
+    "1bWN4v6DJB0emsQUU5pydxRhIH6ibIERe3ujFBV5luEI",
+    "Sheet1!A1:D4"
+  );
+  data?.shift();
   return (
     <section id="leadership" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,28 +41,28 @@ export default function Leadership() {
           Our Leadership Team
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {leaders.map((leader) => (
+          {data?.map((leader) => (
             <div
-              key={leader.name}
+              key={leader[0]}
               className="bg-white rounded-lg shadow-lg overflow-hidden"
             >
               <img
                 className="w-full h-64 object-cover"
-                src={leader.image}
-                alt={leader.name}
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80"
+                alt={leader[0]}
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold">{leader.name}</h3>
-                <p className="text-gray-600">{leader.position}</p>
+                <h3 className="text-xl font-semibold">{leader[0]}</h3>
+                <p className="text-gray-600">{leader[1]}</p>
                 <div className="mt-4 flex space-x-4">
                   <a
-                    href={`mailto:${leader.email}`}
+                    href={`mailto:${leader[2]}`}
                     className="text-gray-600 hover:text-blue-900"
                   >
                     <Mail className="h-5 w-5" />
                   </a>
                   <a
-                    href={leader.linkedin}
+                    href={leader[2]}
                     className="text-gray-600 hover:text-blue-900"
                   >
                     <Linkedin className="h-5 w-5" />

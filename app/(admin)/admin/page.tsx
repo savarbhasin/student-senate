@@ -84,12 +84,11 @@ export default async function SignIn() {
             <button
               onClick={async () => {
                 "use server";
-                console.log(
-                  await readSpreadsheet(
-                    "1bWN4v6DJB0emsQUU5pydxRhIH6ibIERe3ujFBV5luEI",
-                    "Sheet1!A1:D4"
-                  )
+                const data = await readSpreadsheet(
+                  "1bWN4v6DJB0emsQUU5pydxRhIH6ibIERe3ujFBV5luEI",
+                  "Sheet1!A1:D4"
                 );
+                console.log(data?.map((row) => row.join(", ")).join("\n"));
               }}
               className="p-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition duration-300"
             >
