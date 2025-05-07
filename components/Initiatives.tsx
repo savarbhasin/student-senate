@@ -1,44 +1,7 @@
 import { readSpreadsheet } from "@/lib/sheets";
 import { CheckCircle, Clock } from "lucide-react";
 
-const initiatives = [
-  {
-    title: "Campus Sustainability Project",
-    description:
-      "Implementation of recycling programs and renewable energy solutions across campus.",
-    status: "in-progress",
-  },
-  {
-    title: "Mental Health Resources",
-    description:
-      "Expanding counseling services and mental health awareness programs.",
-    status: "completed",
-  },
-  {
-    title: "Student Housing Improvement",
-    description:
-      "Advocating for better housing conditions and affordable options.",
-    status: "in-progress",
-  },
-  {
-    title: "Academic Support Services",
-    description:
-      "Enhancing tutoring programs and study resources for all students.",
-    status: "in-progress",
-  },
-  {
-    title: "Campus Safety Initiative",
-    description:
-      "Improving lighting, emergency response systems, and safety protocols.",
-    status: "completed",
-  },
-  {
-    title: "Diversity & Inclusion",
-    description:
-      "Promoting inclusive campus culture and diverse student representation.",
-    status: "in-progress",
-  },
-];
+
 
 export default async function Initiatives() {
   const data = await readSpreadsheet(
