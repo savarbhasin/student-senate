@@ -48,7 +48,7 @@ export default async function Leadership() {
             >
               <img
                 className="w-full h-64 object-cover"
-                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80"
+                src={leader[3]}
                 alt={leader[0]}
               />
               <div className="p-6">
